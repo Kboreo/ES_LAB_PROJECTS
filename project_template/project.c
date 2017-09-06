@@ -32,12 +32,15 @@ int  main(void)
 		// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
     // enable the GPIO pin for digital function.
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
+		// Need to set pin as a pull up
+		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4);  //Set switch (SW1) port (Port 'F' Pin 4)
     while(1)
     {
-				
+		
         // Turn on the LED.
         GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);
-
+				GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4);  //Read PIN 4 to see if SW1 is pressed
+			
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
         {
