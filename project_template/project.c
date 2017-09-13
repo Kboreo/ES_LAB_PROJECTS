@@ -54,14 +54,15 @@ int  main(void)
     
 		// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3); // set pin 3 as output
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|PIO_PIN_1); // set pin 1,2,3 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 as input
 		//these two switchs need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
 		
-		int x;
 		
-		x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+		int x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+		int y = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4);
+		
 		
 		while(x == 1)
 		{
