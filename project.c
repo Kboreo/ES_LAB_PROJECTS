@@ -52,31 +52,34 @@ int  main(void)
 		
 		UnlockPins();
     
-		// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
+		// Enable the GPIO pin for the LED (PF 3, 2, 1).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3); // set pin 3 as output
-		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 as input
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 1,2,3 as output
+		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 0 and 4 as input
 		//these two switchs need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
 		
-		int x;
 		
-		x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+		int x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+		 
 		
-		while(x == 1)
-		{
-			x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);	
-		}
 			
 		
     while(1)
     {
+			x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+			
+			while(x == 0)
+		{
+			  x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);	
+		
 				UARTCharPut(UART0_BASE, temp);
 			  temp++;
 				//UARTCharPut(UART0_BASE, '\n');
 				//UARTCharPut(UART0_BASE, '\r');
         // Turn on the LED.
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);
+
 
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
@@ -84,11 +87,13 @@ int  main(void)
         }
 
         // Turn off the LED.
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x0);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x0);
 
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
         {
         }
+				
     }
+		}
 }
