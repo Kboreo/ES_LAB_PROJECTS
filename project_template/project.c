@@ -54,15 +54,16 @@ int  main(void)
     
 		// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2); // set pin 3and 2 as output
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2); // set pin 3 and 2 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 and 0 as input
-		//these two switchs need an internal pull up on pins
+		//these two switches need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
 		
-		int x;  //Int that contains the output of the button SW2
-		int y;  //Int that contains the output of the button SW1
+		//int x;  //Int that contains the output of the button SW2
+		//int y;  //Int that contains the output of the button SW1
 		
-		x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0); // set x equal to the output of button SW2 
+		int x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0); // set x equal to the output of button SW2 
+		int y = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4); // set x equal to the output of button SW1
 		
 		while(x == 1)  //While loop that keeps checking until x does not equal 1, meaning SW2 was pushed. 
 		{
