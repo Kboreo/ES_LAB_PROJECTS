@@ -47,12 +47,16 @@ int  main(void)
 		
 		uint8_t temp;
     volatile uint32_t ui32Loop;
+
+	// Enable the clock to the ADC module
+
 	
 	
 	
     // Enable the GPIO port that is used for the on-board LED and pwm.
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA | SYSCTL_PERIPH_GPIOE);
     SetupHardware();
+		
 
 		
 		// Check if the peripheral access is enabled.
