@@ -1,6 +1,8 @@
 #include "project.h"
 #include <stdio.h>
 #include <stdint.h>
+	
+#define  ADC0_SEQUENCER3   3
 
 //*****************************************************************************
 //
@@ -22,11 +24,7 @@ void SetupHardware()
 //	UartSetup2();
 }
 
-//ui32Base is the base address of the ADC to configure, which must always be ADC0_BASE.
-//ui32Config is a combination of the ADC_CLOCK_SRC_ and ADC_CLOCK_RATE_ values
-//used to configure the ADC clock input.
-//ui32ClockDiv is the input clock divider for the clock selected by the ADC_CLOCK_SRC value.
-void ADCClockConfigSet(uint32_t ui32Base, uint32_t ui32Config, uint32_t ui32ClockDiv);
+
 
 
 
@@ -39,6 +37,9 @@ void UnlockPins()
 	
 }
 
+
+
+
 int  main(void)
 {
 	
@@ -48,19 +49,18 @@ int  main(void)
 		uint8_t temp;
     volatile uint32_t ui32Loop;
 
-	// Enable the clock to the ADC module
+	// Enable the GPIO port that is used for the on-board LED and pwm.
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA);
+	// Allow register access to ADC0 and ADC1
+	//	SysCtlPeripheralEnable( SYSCTL_PERIPH_ADC0);
+	//	SysCtlPeripheralEnable( SYSCTL_PERIPH_ADC1);
 
-	
-	
-	
-    // Enable the GPIO port that is used for the on-board LED and pwm.
-		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA | SYSCTL_PERIPH_GPIOE);
     SetupHardware();
 		
 
 		
 		// Check if the peripheral access is enabled.
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA | SYSCTL_PERIPH_GPIOE))
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
     {
     
 		}
@@ -72,33 +72,42 @@ int  main(void)
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set Port F pin 1,2,3 as output
 		GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4); // set Port A pin 2,3,4 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set PORT F pin 0 and 4 as input
-		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_1|GPIO_PIN_2); // set PORT E pin 1 and 2 as input
+		
 		//these two switchs need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
-		GPIOPadConfigSet(GPIO_PORTE_BASE,GPIO_PIN_1|GPIO_PIN_2, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_ANALOG); //set port E pin 1,2 as analog input
-		
 		
 		// set x equal to the value of switch 1
 		int x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
 		 
-		
+		//************************************************
+		//A to D stuff
+		// Configure of the pins for ADC Type
+	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);
+	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_5);
+
+
+	
+
+
 			
 		
     while(1)
     {
+			
+		
 				//Reads the value of switch 2 while in loop
 				//Will flash on board blue LED when switch is pressed 
 				x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
 			
-			int delay_on;
-			int delay_off; 
+			//int delay_on;
+			//int delay_off; 
 			
-			while(x==1)
-		{
+		//	while(x==1)
+		//{
 			
 				//Reads the value of switch 2 while in loop
 				//Will flash on board blue LED when switch is pressed 
-				x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
+			//	x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
 				
 			
 
@@ -113,19 +122,19 @@ int  main(void)
 
 
        // Delay for a bit.
-       for(ui32Loop = 0; ui32Loop < delay_on; ui32Loop++)
-        {
-        }
+       //for(ui32Loop = 0; ui32Loop < delay_on; ui32Loop++)
+       // {
+       // }
 
         // Turn off the LED.
-        GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0x0);
+        //GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0x0);
 
         // Delay for a bit.
-        for(ui32Loop = 0; ui32Loop < delay_off; ui32Loop++)
-        {
-        }
+       // for(ui32Loop = 0; ui32Loop < delay_off; ui32Loop++)
+       // {
+       // }
 				
-    }
+  //  }
 			
 			
 			
@@ -164,4 +173,9 @@ int  main(void)
 				
     }
 		}
+		return(0);
 }
+
+//******************
+//A to D stuff
+
