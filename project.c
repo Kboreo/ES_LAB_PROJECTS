@@ -21,12 +21,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
-//	UartSetup2();
 }
-
-
-
-
 
 void UnlockPins()
 {
@@ -86,6 +81,7 @@ int  main(void)
 	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_5);
 
 
+	int usafd = 839;
 	
 
 
