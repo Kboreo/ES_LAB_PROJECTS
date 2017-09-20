@@ -22,16 +22,7 @@ void SetupHardware()
 	UartSetup();
 }
 
-void UnlockPins()
-{
-	//Need to Unlock PF4
-	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
-	HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0xFF;
-	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0; 
-	
-}
 
-	
 
 int  main(void)
 {
