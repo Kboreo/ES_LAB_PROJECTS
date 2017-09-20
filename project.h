@@ -54,3 +54,5 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "hw_gpio.h"
 #include "hw_types.h"
+
+#include "src/Uart_helper.h"

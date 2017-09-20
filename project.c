@@ -1,8 +1,9 @@
 #include "project.h"
 #include <stdio.h>
 #include <stdint.h>
+
 	
-#define  ADC0_SEQUENCER3   3
+
 
 //*****************************************************************************
 //
@@ -35,29 +36,37 @@ void UnlockPins()
 
 
 
+
 int  main(void)
 {
+
 	
-		//*******************************
+
+	//*******************************
 		//Setup/unlock pins as inputs and outputs
 		
 		uint8_t temp;
     volatile uint32_t ui32Loop;
+		uint32_t ui32Value;
 
-	// Enable the GPIO port that is used for the on-board LED and pwm.
+	// Enable the GPIO port that is used for the on-board LED 
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA);
-	// Allow register access to ADC0 and ADC1
-	//	SysCtlPeripheralEnable( SYSCTL_PERIPH_ADC0);
-	//	SysCtlPeripheralEnable( SYSCTL_PERIPH_ADC1);
 
-    SetupHardware();
+		// Enable the ADC0 module.
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
+    
+		SetupHardware();
 		
 
 		
 		// Check if the peripheral access is enabled.
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
-    {
-    
+    {   
+		}
+		
+		// Wait for the ADC0 module to be ready.
+	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
+		{
 		}
 		
 		UnlockPins();
@@ -81,61 +90,16 @@ int  main(void)
 	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_5);
 
 
-	int usafd = 839;
-	
-
-
-			
+	int usafd = 839;			
 		
     while(1)
-    {
-			
+    {		
+		printf("Hello\n");	
+		//char temp = getc(stdin);	
+		//printf("this the car %c", temp); 
 		
-				//Reads the value of switch 2 while in loop
-				//Will flash on board blue LED when switch is pressed 
-				x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
-			
-			//int delay_on;
-			//int delay_off; 
-			
-		//	while(x==1)
-		//{
-			
-				//Reads the value of switch 2 while in loop
-				//Will flash on board blue LED when switch is pressed 
-			//	x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
-				
-			
-
-
-
-			
-					
-		
-				
-      // Turn on the LED.
-       GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0xFF);
-
-
-       // Delay for a bit.
-       //for(ui32Loop = 0; ui32Loop < delay_on; ui32Loop++)
-       // {
-       // }
-
-        // Turn off the LED.
-        //GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0x0);
-
-        // Delay for a bit.
-       // for(ui32Loop = 0; ui32Loop < delay_off; ui32Loop++)
-       // {
-       // }
-				
-  //  }
-			
-			
-			
-			
-			
+		 // Turn on the LED.
+       //GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0xFF);
 			
 			//**************************
 			// Flash LED Blue when switch 1 is pressed
