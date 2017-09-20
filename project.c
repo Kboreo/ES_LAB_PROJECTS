@@ -20,7 +20,6 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
-//	UartSetup2();
 }
 
 void UnlockPins()
@@ -32,10 +31,13 @@ void UnlockPins()
 	
 }
 
+	
+
 int  main(void)
 {
 		
 		uint8_t temp;
+		char ctemp;
     volatile uint32_t ui32Loop;
 	
 	
@@ -55,11 +57,42 @@ int  main(void)
     
 		// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2); // set pin 3 and 2 as output
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 3 and 2 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 and 0 as input
 		//these two switches need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
 		
+	
+		
+		printf("What LED would you like to turn on?\n1.Blue\n2.Red\n3.Green\n");
+		ctemp = getc(stdin);
+		printf("%c",ctemp);
+		
+	switch (ctemp)
+			{
+			case '1':
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);  // Turn on blue LED				
+				break;
+			
+			case '2':
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0xF);  // Turn on red LED				
+				break;
+			
+			case '3':
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);  // Turn on blue LED
+				break;
+			
+			default:
+				
+			printf("Ya done fucked up, try again!");
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x0);  // Turn on blue LED
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x0);  // Turn on blue LED
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x0);  // Turn on blue LED
+				break;
+			
+			
+		
+		}
 		//int x;  //Int that contains the output of the button SW2
 		//int y;  //Int that contains the output of the button SW1
 		
