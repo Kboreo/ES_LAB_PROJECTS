@@ -81,3 +81,5 @@ void ADCReadChan()
 		ADC_Values[12]=scratch; 
 	}
 }
+
+

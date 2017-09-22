@@ -22,6 +22,8 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
+	SetupADC();
+	SetupADCPins();
 }
 
 void UnlockPins()
@@ -32,6 +34,9 @@ void UnlockPins()
 	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0; 
 	
 }
+
+
+
 
 
 
@@ -94,12 +99,16 @@ int  main(void)
 		
     while(1)
     {		
-		printf("Hello\n");	
-		//char temp = getc(stdin);	
-		//printf("this the car %c", temp); 
-		
-		 // Turn on the LED.
-       //GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4, 0xFF);
+	
+			
+	void ADCReadChan();
+			
+	printf("ADC Values are %d, ", usafd);
+			
+			
+			
+	
+			
 			
 			//**************************
 			// Flash LED Blue when switch 1 is pressed
