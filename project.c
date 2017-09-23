@@ -1,6 +1,8 @@
 #include "project.h"
 #include <stdio.h>
 #include <stdint.h>
+#include "HAL_ADC.h"
+
 
 	
 
@@ -22,8 +24,9 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
-	SetupADC();
-	SetupADCPins();
+	void SetupADC();
+	void SetupADCPins();
+
 }
 
 void UnlockPins()
@@ -94,19 +97,28 @@ int  main(void)
 	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);
 	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_5);
 
-
+//	void SetupADC();
+//	void SetupADCPins();
 	int usafd = 839;			
 		
-    while(1)
-    {		
-	
+   	
+		
 			
-	void ADCReadChan();
+			 
+		for(uint32_t i=0; i<13;i++)
+			{
+			ADC_Values[i]=0;
+		}
+	 ADCReadChan();
+		
+		for(uint8_t i = 0; i < 13; i++)
+		{
 			
-	printf("ADC Values are %d, ", usafd);
+	printf("ADC Values are %d, \n", ADC_Values[i]);
+		}
 			
-			
-			
+	 while(1)
+    {			
 	
 			
 			
