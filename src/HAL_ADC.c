@@ -4,13 +4,13 @@
 uint32_t ADC_Values[13];
 
 
-void SetupADCPins(void);
+//void SetupADCPins(void);
 
 //set up for 2 pots and accelerometer + 1 extra
 void SetupADCPins()
 {
 	GPIOPinTypeADC(GPIO_PORTE_BASE,GPIO_PIN_3|GPIO_PIN_1|GPIO_PIN_2);
-	GPIOPinTypeADC(GPIO_PORTD_BASE,GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
+	//GPIOPinTypeADC(GPIO_PORTD_BASE,GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 	//GPIOPinTypeADC(GPIO_PORTE_BASE,GPIO_PIN_2);
 	
 }

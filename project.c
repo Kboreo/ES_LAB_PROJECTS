@@ -24,8 +24,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
-	void SetupADC();
-	void SetupADCPins();
+
 
 }
 
@@ -48,7 +47,9 @@ void UnlockPins()
 int  main(void)
 {
 
-	
+// Configure the ADC to use PLL at 480 MHz divided by 24 to get an ADC
+// clock of 20 MHz.
+//		ADCClockConfigSet(ADC0_BASE, ADC_CLOCK_SRC_PLL | ADC_CLOCK_RATE_FULL, 24);
 
 	//*******************************
 		//Setup/unlock pins as inputs and outputs
@@ -68,9 +69,9 @@ int  main(void)
 
 		
 		// Check if the peripheral access is enabled.
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
-    {   
-		}
+   // while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
+   // {   
+		//}
 		
 		// Wait for the ADC0 module to be ready.
 	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
@@ -84,6 +85,7 @@ int  main(void)
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set Port F pin 1,2,3 as output
 		GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4); // set Port A pin 2,3,4 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set PORT F pin 0 and 4 as input
+		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3); // set PORT E pin 3 as input
 		
 		//these two switchs need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
@@ -102,14 +104,15 @@ int  main(void)
 	int usafd = 839;			
 		
    	
-		
 			
+			SetupADCPins();
+			SetupADC();
 			 
 		for(uint32_t i=0; i<13;i++)
 			{
 			ADC_Values[i]=0;
 		}
-	 ADCReadChan();
+	while(1) ADCReadChan();
 		
 		for(uint8_t i = 0; i < 13; i++)
 		{
