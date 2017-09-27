@@ -24,7 +24,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 void SetupHardware()
 {
 	UartSetup();
-
+	
 
 }
 
@@ -34,6 +34,10 @@ void UnlockPins()
 	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
 	HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0xFF;
 	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0; 
+	
+	//HWREG(GPIO_PORTE_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+	//HWREG(GPIO_PORTE_BASE + GPIO_O_CR) = 0xFF;
+	//HWREG(GPIO_PORTE_BASE + GPIO_O_LOCK) = 0; 
 	
 }
 
@@ -59,24 +63,26 @@ int  main(void)
 		uint32_t ui32Value;
 
 	// Enable the GPIO port that is used for the on-board LED 
-		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA);
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA| SYSCTL_PERIPH_GPIOE);
 
 		// Enable the ADC0 module.
-		SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
+		//SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
     
 		SetupHardware();
+		//GpioSetup();
+	
 		
 
 		
 		// Check if the peripheral access is enabled.
-   // while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
-   // {   
-		//}
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF | SYSCTL_PERIPH_GPIOA))
+    {   
+		}
 		
 		// Wait for the ADC0 module to be ready.
-	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
-		{
-		}
+	//while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
+		//{
+		//}
 		
 		UnlockPins();
     
@@ -85,7 +91,7 @@ int  main(void)
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set Port F pin 1,2,3 as output
 		GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4); // set Port A pin 2,3,4 as output
 		GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set PORT F pin 0 and 4 as input
-		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3); // set PORT E pin 3 as input
+		//GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3); // set PORT E pin 3 as input
 		
 		//these two switchs need an internal pull up on pins
 		GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
@@ -93,26 +99,20 @@ int  main(void)
 		// set x equal to the value of switch 1
 		int x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);
 		 
-		//************************************************
-		//A to D stuff
-		// Configure of the pins for ADC Type
-	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);
-	//GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_5);
-
-//	void SetupADC();
-//	void SetupADCPins();
-	int usafd = 839;			
+	//int usafd = 839;			
 		
    	
-			
-			SetupADCPins();
-			SetupADC();
+		SetupADC();	
+
 			 
 		for(uint32_t i=0; i<13;i++)
 			{
 			ADC_Values[i]=0;
 		}
-	while(1) ADCReadChan();
+	while(1) 
+	{
+		ADCReadChan();
+	}
 		
 		for(uint8_t i = 0; i < 13; i++)
 		{

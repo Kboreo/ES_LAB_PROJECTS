@@ -1,10 +1,9 @@
 #include "HAL_ADC.h"
 
-
 uint32_t ADC_Values[13];
 
 
-//void SetupADCPins(void);
+void SetupADCPins(void);
 
 //set up for 2 pots and accelerometer + 1 extra
 void SetupADCPins()
@@ -24,9 +23,6 @@ void SetupADC()
 	// Enable the ADC0 module.
 	//
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
-	//
-
-	
 	//
 	// Wait for the ADC0 module to be ready.
 	//
@@ -65,28 +61,22 @@ void ADCReadChan()
 	//
 	// Trigger the sample sequence.
 	//
-		ADCProcessorTrigger(ADC0_BASE, 0); //OG
-		//ADCProcessorTrigger(GPIO_PORTE_BASE, GPIO_PIN_3)
+	ADCProcessorTrigger(ADC0_BASE, 0);
+
 	//
 	// Wait until the sample sequence has completed.
 	//
 	while(ADCBusy(ADC0_BASE)){};
 	//while(!ADCIntStatus(ADC0_BASE, 0, false))
 	{
-		
 	}
 	//
 	// Read the value from the ADC.
-	//int x = GPIOA
-	//int y = GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_3);
+	//
 	
-	//ADCSequenceDataGet(GPIO_PORTE_BASE, GPIO_PIN_3, ADC_Values);//TRYing shit
-	//scratch = (
-	scratch = (ADCSequenceDataGet(ADC0_BASE, 0, ADC_Values));//OG
+	scratch = (ADCSequenceDataGet(ADC0_BASE, 0, ADC_Values));
 	if (scratch < 13)
 	{
 		ADC_Values[12]=scratch; 
 	}
 }
-
-
