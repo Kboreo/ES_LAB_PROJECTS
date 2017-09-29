@@ -425,6 +425,16 @@
               <FileType>1</FileType>
               <FilePath>.\myUART.c</FilePath>
             </File>
+            <File>
+              <FileName>Systick_helper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Systick_helper.c</FilePath>
+            </File>
+            <File>
+              <FileName>Systick_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Systick_helper.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
