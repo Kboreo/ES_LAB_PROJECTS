@@ -1,3 +1,6 @@
+#include "Systick_helper.h"
+
+
 #define NVIC_ST_CTRL_R          (*((volatile unsigned long *)0xE000E010))
 #define NVIC_ST_RELOAD_R        (*((volatile unsigned long *)0xE000E014))
 #define NVIC_ST_CURRENT_R       (*((volatile unsigned long *)0xE000E018))
@@ -13,6 +16,7 @@ void SetupSystick()
 	NVIC_ST_RELOAD_R = NVIC_ST_RELOAD_M; // maximum reload value
 	NVIC_ST_CURRENT_R = 0; // any write to current clears it
 	NVIC_ST_CTRL_R = NVIC_ST_CTRL_ENABLE+NVIC_ST_CTRL_CLK_SRC; // enable SysTick with core clock
+
 }
 
 

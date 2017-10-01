@@ -435,6 +435,26 @@
               <FileType>5</FileType>
               <FilePath>.\Systick_helper.h</FilePath>
             </File>
+            <File>
+              <FileName>HAL_Systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HAL_Systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_Systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HAL_Systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HAL_ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HAL_ADC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
