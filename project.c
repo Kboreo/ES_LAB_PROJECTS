@@ -22,11 +22,7 @@ int  main(void)
     
     SetupHardware();
 		
-		// Check if the peripheral access is enabled.
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF))
-    {
-    
-		}		
+
 		UnlockPins();		//Function that unlocks certain pins that are needed.
     setup_IO();
 		setup_UART(ctemp);

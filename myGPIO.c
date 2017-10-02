@@ -6,6 +6,12 @@ void setup_IO()
 {
 	// Enable the GPIO port that is used for the on-board LED.
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+	
+	// Check if the peripheral access is enabled.
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF))
+   {
+    
+	 }		
 	// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
   // enable the GPIO pin for digital function.
   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 3 and 2 as output
