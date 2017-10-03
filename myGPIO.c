@@ -25,6 +25,7 @@ void Delay(void);
 
 void setup_IO()
 {
+
 	// Enable the GPIO port that is used for the on-board LED.
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	// Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
@@ -38,27 +39,14 @@ void setup_IO()
     {
     
 		}	
-
-
-
-
-
+	//Need to Unlock PF4
+	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+	HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0xFF;
+	HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0;
 // 3. Subroutines Section
    
   PortF_Init();        			// Call initialization of port PF0-PF4    
-//  for(int i =0; i<1; i++){
-//    SW1 = GPIO_PORTF_DATA_R&0x10; 	// read PF4 into SW1
-//    SW2 = GPIO_PORTF_DATA_R&0x01; 	// read PF0 into SW2
-//    if(SW1 == 0x00){              	// zero means SW1 is pressed
-//      GPIO_PORTF_DATA_R = 0x08;   	// LED is green
-//     } 
-//    else if(SW2 == 0x00){               // 0x10 means SW1 is not pressed
-//      GPIO_PORTF_DATA_R = 0x02;  	// LED is red
-//     }
-//    Delay();				// wait 0.1 sec
-//    GPIO_PORTF_DATA_R = 0x04;    	// LED is blue
-//    Delay();                     	// wait 0.1 sec
-//  }
+
 }
 
 // Subroutine to initialize port F pins for input and output
@@ -78,35 +66,26 @@ void PortF_Init(void){
   GPIO_PORTF_DEN_R = 0x1F;          // 7) enable digital pins PF4-PF0        
 }
 
-//void Delay(void){unsigned long volatile time;
- // time = 727240*200/91;  // 0.1sec
- // while(time){
-   // time--;
-  //}
-//}
+
 		
 
 
 void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp)
 {
+	int i = 1;
+	printf("Press SW1 to turn on Blue LED\nPress SW2 to turn on Red LED\n"); 
+	printf("Press both SW1 and SW2 to exit GPIO\n");
+	
+	
+	while (i == 1)
+	{
 		int x;  //Int that contains the output of the button SW2
 		int y;  //Int that contains the output of the button SW1
-		
+
 		x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0); // set x equal to the output of button SW2 
-		y = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4); // set x equal to the output of button SW1
-		
-		while(x == 1)  //While loop that keeps checking until x does not equal 1, meaning SW2 was pushed. 
-		{
-			x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0);	
-		}
+		y = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4); // set y equal to the output of button SW1		
 			
-		
-    while(1)
-    {
-			x = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0); // set x equal to the output of button SW2
-			y = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4); // set x equal to the output of button SW1
-			
-			if (x && y == 0) //if loop that checks if SW1 and SW2 are pressed, if they are both pressed, blue LED will light.
+			if (y == 0) //if loop that checks if SW1 is pressed, if it is pressed, blue LED will light.
 			{
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);  // Turn on blue LED
 				
@@ -121,28 +100,34 @@ void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp)
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
         {
-        }
-				
+        }			
 			}
-			else  //Else green LED will light.
+			else if (x == 0) //if loop that checks if SW2 is pressed, if  pressed, red LED will light.
 			{
-				UARTCharPut(UART0_BASE, temp);
-			  temp++;
-        // Turn on the LED.
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);
-
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0xF);  // Turn on blue LED
+				
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
         {
         }
 
         // Turn off the LED.
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x0);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x0);
 
         // Delay for a bit.
         for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
         {
         }
+				
 			}
-    }
+			//will exit GPIO when both SW1 and SW2 are pressed
+			if ( x == 0)
+		 {
+			 if (y == 0)
+			 {
+			i = 0;
+			 }
+		 }				
+    }		
 }
+	
