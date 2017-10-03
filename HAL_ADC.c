@@ -65,8 +65,12 @@ void SetupADC()
 
 void ADCReadChan()
 {
+	
 	while(1)
 	{
+	
+	SysTickWait10msDN(10);
+	printf("\n\n");
 	int32_t scratch;
 	//
 	// Trigger the sample sequence.
@@ -90,21 +94,16 @@ void ADCReadChan()
 		ADC_Values[12]=scratch;
 	}
 		 
-	float x[12];
+	double x;	
+		x = ADC_Values[0];		
+		x = x * .000807;
 		
-		for (int i=0;i<12;i++)
-		{	
-			
-		 x[i] = ADC_Values[i];
-		}
-//float array[3] = {.02,1.22,3.00};
-		//printf("%d\n ", scratch); 
-		for (int i = 0; i<12; i++)
-		{
-		printf("Array, %.2f \n", x[i]);
+		printf("Voltage on PE3 is, %.2fV \n\n", x);
 			
 		SysTickWait10msDN(10);
-		}
-	}
-
+	
+		break; 
 }
+}
+
+

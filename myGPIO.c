@@ -74,7 +74,7 @@ void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp)
 {
 	int i = 1;
 	printf("Press SW1 to turn on Blue LED\nPress SW2 to turn on Red LED\n"); 
-	printf("Press both SW1 and SW2 to exit GPIO\n");
+	printf("Press both SW1 and SW2 to exit GPIO\n\n");
 	
 	
 	while (i == 1)

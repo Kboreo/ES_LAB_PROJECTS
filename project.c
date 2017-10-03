@@ -44,12 +44,32 @@ while (1)
 			case '2':
 				
 				//PWM
+				printf("no idea\n\n");
 				break;			
 							
 			case '3':
 				
 				//Uart
-			setup_UART(ctemp);
+				setup_UART(ctemp);
+				break;
+			
+			case '4':
+				
+				//systick
+				printf("Blue LED will stay on for 5 seconds?\n\n");		
+				SysTickWait10msDN(100);
+				break;
+			
+			case'5':
+				
+				//NVIC
+				printf ("No idea\n\n");
+				break;
+			
+			case'6':
+				
+				//ADC
+				ADCReadChan();
 				break;
 			
 			default:				
@@ -59,30 +79,7 @@ while (1)
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x0);  // Turn off LED
 				break;		
 		}
-	}
-	
-	//uint8_t temp;
-		//char ctemp;
-  //volatile uint32_t ui32Loop;		
- // pinReadAndWrite(ui32Loop, temp); 
-   
-		
-	
-	
-	
-	//UnlockPins();		//Function that unlocks certain pins that are needed.
-    
-		//setup_UART(ctemp);
-		
-	//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);  // Turn on blue LED
-	
-//	SysTickWait10msDN(100);
-	//SysTickWait10ms(
-	
-	//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);  // Turn on blue LED
-	
-	ADCReadChan();
-	
+	}	
 }
 
 

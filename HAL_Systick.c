@@ -30,11 +30,13 @@ void SysTickWaitDN(unsigned long delay)
 
 void SysTickWait10msDN(unsigned long delay)
 {
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);  // Turn on blue LED
   unsigned long i;
   for(i=0; i<delay; i++)
 	{
     SysTickWaitDN(800000);  // wait 10ms
   }
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x0);  // Turn off blue LED
 }
 
 
