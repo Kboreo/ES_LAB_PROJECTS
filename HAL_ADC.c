@@ -100,7 +100,7 @@ void ADCReadChan()
 		
 		printf("Voltage on PE3 is, %.2fV \n\n", x);
 			
-		SysTickWait10msDN(10);
+
 	
 		 
 }

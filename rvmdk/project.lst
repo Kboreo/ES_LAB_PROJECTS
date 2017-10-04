@@ -1,4 +1,17 @@
 L 1 "project.c"
+N/*********************************************************************************************************************************
+N**
+N** Module Name:   project.c
+N**
+N** Module Description: C file 
+N**
+N**********************************************************************************************************************************
+N**
+N** Author(s):		Kodey Boreo, Phillip Tesolin 
+N**
+N**********************************************************************************************************************************/
+N
+N//Includes
 N#include "project.h"
 L 1 "project.h" 1
 N#include <stdbool.h>
@@ -64738,7 +64751,7 @@ Nvoid ADCReadChan(void);
 N
 L 63 "project.h" 2
 N
-L 2 "project.c" 2
+L 15 "project.c" 2
 N#include <stdio.h>
 N#include <stdint.h>
 N
@@ -64754,7 +64767,7 @@ N//Function Protoypes
 N
 Nvoid SetupHardware()  //Function that sets up all of the pins,ports, etc... that are used in the program
 N{
-W "project.c" 17 2 function "UnlockPins" declared implicitly
+W "project.c" 30 2 function "UnlockPins" declared implicitly
 N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
 N	UartSetup();	//Sets up Uart communication using RealTerm
 N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
@@ -64794,7 +64807,7 @@ N				break;
 N			
 N			//Uart				
 N			case '3':
-W "project.c" 55 5 function "setup_UART" declared implicitly
+W "project.c" 68 5 function "setup_UART" declared implicitly
 N				setup_UART(ctemp);
 N				break;
 N			
