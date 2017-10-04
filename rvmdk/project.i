@@ -18362,67 +18362,67 @@ void ADCReadChan(void);
 
 #line 12 "project.c"
 
-void SetupHardware()
+
+
+void SetupHardware()  
 {
-	UnlockPins();
-	UartSetup();
+	UnlockPins();	
+	UartSetup();	
 	setup_IO();		
-	SetupSystickDN();
-	SetupADC();
-	
+	SetupSystickDN();	
+	SetupADC();	
 }
+
 
 int  main(void)
 {		
+	
+	char ctemp; 
+	uint8_t temp;	
+	volatile uint32_t ui32Loop; 
+	
 	SetupHardware();
+	
 
-	char ctemp;
-	uint8_t temp;
-	volatile uint32_t ui32Loop;	
 while (1)
 {
-	printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n");
-		ctemp = getc((& __stdin));
-		printf("You entered %c\n\n",ctemp);
+		printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n"); 
+		ctemp = getc((& __stdin)); 
+		printf("You entered %c\n\n",ctemp); 
 		
-	switch (ctemp)
-			{
-			case '1':
-				
-				
+		switch (ctemp)		
+		{
+			
+			case '1':						
 				pinReadAndWrite(ui32Loop, temp); 
 				break;	
 			
-			case '2':
-				
-				
+			
+			case '2':				
 				printf("no idea\n\n");
-				break;			
-							
+				break;
+			
+			
 			case '3':
-				
-				
 				setup_UART(ctemp);
 				break;
 			
-			case '4':
-				
-				
+			
+			case '4':				
 				printf("Blue LED will stay on for 5 seconds?\n\n");		
 				SysTickWait10msDN(100);
 				break;
 			
-			case'5':
-				
-				
+			
+			case'5':				
 				printf ("No idea\n\n");
 				break;
 			
-			case'6':
-				
-				
+			
+			case'6':				
 				ADCReadChan();
 				break;
+			
 			
 			default:				
 				printf("Ya done messed up, try again!\n\n");

@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.24.2.0
 Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Phillip Tesolin, LTU, LIC=----
+License Information: Kodey Boreo, Lawrence Technological University, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.24.1
@@ -17,11 +17,11 @@ Library Manager: ArmAr.exe V5.06 update 5 (build 528)
 Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
 CPU DLL:         SARMCM3.DLL V5.24.1
 Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      UL2CM3.DLL V1.160.3.0
+Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-C:\Users\ptesolin\Documents\GitHub\ADC\ES_LAB_PROJECTS\project.uvprojx
+C:\Users\kboreo\Documents\GitHub\ES_LAB_PROJECTS\project.uvprojx
 Project File Date:  10/04/2017
 
 <h2>Output:</h2>
@@ -78,9 +78,9 @@ myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg type
   void setup_IO();
 myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
   void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-project.c(15): warning:  #223-D: function "UnlockPins" declared implicitly
-  	UnlockPins();
-project.c(53): warning:  #223-D: function "setup_UART" declared implicitly
+project.c(17): warning:  #223-D: function "UnlockPins" declared implicitly
+  	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
+project.c(55): warning:  #223-D: function "setup_UART" declared implicitly
   				setup_UART(ctemp);
 project.c: 8 warnings, 0 errors
 creating preprocessor file for HAL_ADC.c...
@@ -127,7 +127,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

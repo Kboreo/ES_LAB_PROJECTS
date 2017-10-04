@@ -64750,71 +64750,71 @@ S{
 S}
 N#endif
 N
-Nvoid SetupHardware()
+N//Function Protoypes
+N
+Nvoid SetupHardware()  //Function that sets up all of the pins,ports, etc... that are used in the program
 N{
-W "project.c" 15 2 function "UnlockPins" declared implicitly
-N	UnlockPins();
-N	UartSetup();
+W "project.c" 17 2 function "UnlockPins" declared implicitly
+N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
+N	UartSetup();	//Sets up Uart communication using RealTerm
 N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
-N	SetupSystickDN();
-N	SetupADC();
-N	
+N	SetupSystickDN();	//Sets up the timers and hardware to use systick
+N	SetupADC();	//Hardware setup for ADC 
 N}
 N
+N//Main Code
 Nint  main(void)
 N{		
+N	//Variables
+N	char ctemp; //Temp char used for UART
+N	uint8_t temp;	//Temp 8-bit int used for gpio functions
+N	volatile uint32_t ui32Loop; //32-bit int used for multiple functions 
+N	
 N	SetupHardware();
-N
-N	char ctemp;
-N	uint8_t temp;
-N	volatile uint32_t ui32Loop;	
+N	
+N//While loop for main user menu	
 Nwhile (1)
 N{
-N	printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n");
-N		ctemp = getc(stdin);
-X		ctemp = getc((& __stdin));
-N		printf("You entered %c\n\n",ctemp);
+N		printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n"); //Askes user what function they would like to use.
+N		ctemp = getc(stdin); //Gets a char from the terminal from the user.
+X		ctemp = getc((& __stdin)); 
+N		printf("You entered %c\n\n",ctemp); //Lets the user know what they have selected
 N		
-N	switch (ctemp)
-N			{
-N			case '1':
-N				
-N				//GPIO				
+N		switch (ctemp)		//Switch statement that selects which function depending on the user input.
+N		{
+N			//GPIO
+N			case '1':						
 N				pinReadAndWrite(ui32Loop, temp); 
 N				break;	
 N			
-N			case '2':
-N				
-N				//PWM
+N			//PWM
+N			case '2':				
 N				printf("no idea\n\n");
-N				break;			
-N							
+N				break;
+N			
+N			//Uart				
 N			case '3':
-N				
-N				//Uart
-W "project.c" 53 5 function "setup_UART" declared implicitly
+W "project.c" 55 5 function "setup_UART" declared implicitly
 N				setup_UART(ctemp);
 N				break;
 N			
-N			case '4':
-N				
-N				//systick
+N			//systick
+N			case '4':				
 N				printf("Blue LED will stay on for 5 seconds?\n\n");		
 N				SysTickWait10msDN(100);
 N				break;
 N			
-N			case'5':
-N				
-N				//NVIC
+N			//NVIC
+N			case'5':				
 N				printf ("No idea\n\n");
 N				break;
 N			
-N			case'6':
-N				
-N				//ADC
+N			//ADC
+N			case'6':				
 N				ADCReadChan();
 N				break;
 N			
+N			//Default case if user types anything other than the given options
 N			default:				
 N				printf("Ya done messed up, try again!\n\n");
 N				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x0);  // Turn off LED
