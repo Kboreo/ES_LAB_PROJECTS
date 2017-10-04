@@ -66,8 +66,8 @@ void SetupADC()
 void ADCReadChan()
 {
 	
-	while(1)
-	{
+	
+	
 	
 	SysTickWait10msDN(10);
 	printf("\n\n");
@@ -102,8 +102,8 @@ void ADCReadChan()
 			
 		SysTickWait10msDN(10);
 	
-		break; 
+		 
 }
-}
+
 
 
