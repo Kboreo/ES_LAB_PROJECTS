@@ -1,6 +1,11 @@
 --cpu=Cortex-M4.fp
 ".\rvmdk\project.o"
 ".\rvmdk\startup_rvmdk.o"
+".\rvmdk\led.o"
+".\rvmdk\mygpio.o"
+".\rvmdk\myuart.o"
+".\rvmdk\hal_systick.o"
+".\rvmdk\hal_adc.o"
 ".\inc\driverlib.lib"
 ".\rvmdk\uart_helper.o"
 --library_type=microlib --strict --scatter "project.sct"

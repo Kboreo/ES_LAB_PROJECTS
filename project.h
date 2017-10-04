@@ -43,11 +43,6 @@
 
 #include "src/Uart_helper.h"
 
-<<<<<<< HEAD:project_template/project.h
-=======
-
-
->>>>>>> 570699c38d9ff17d29298e34dbca2a462eb47557:project.h
 #include <stdbool.h>
 #include <stdint.h>
 #include "sysctl.h"
@@ -57,9 +52,12 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "hw_gpio.h"
 #include "hw_types.h"
-<<<<<<< HEAD:project_template/project.h
 
+#include "src/Uart_helper.h"
+#include "LED.h"
+#include "myGPIO.h"
 
+//#include "Systick_helper.h"
+#include "HAL_Systick.h"
+#include "HAL_ADC.h"
 
-=======
->>>>>>> 570699c38d9ff17d29298e34dbca2a462eb47557:project.h

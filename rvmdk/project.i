@@ -16905,331 +16905,6 @@ extern void WatchdogStallDisable(uint32_t ui32Base);
 #line 1 "src/Uart_helper.h"
 #line 2 "src/Uart_helper.h"
 #line 3 "src/Uart_helper.h"
-#line 4 "src/Uart_helper.h"
-#line 5 "src/Uart_helper.h"
-#line 6 "src/Uart_helper.h"
-#line 7 "src/Uart_helper.h"
-#line 8 "src/Uart_helper.h"
-
-
-void UartSetup(void);		
-void UartSetup2(void);	
-#line 45 "project.h"
-
-
-
-#line 49 "project.h"
-#line 50 "project.h"
-#line 51 "project.h"
-#line 52 "project.h"
-#line 53 "project.h"
-#line 54 "project.h"
-#line 55 "project.h"
-#line 1 ".\\inc\\hw_gpio.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 79 ".\\inc\\hw_gpio.h"
-
-
-
-
-
-
-
-                                            
-
-
-
-
-
-
-
-
-
-                                            
-
-
-
-
-
-
-
-
-
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            
-
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            
-                                            
-                                            
-                                            
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 194 ".\\inc\\hw_gpio.h"
-                                            
-                                            
-                                            
-
-                                            
-
-                                            
-                                            
-                                            
-                                            
-                                            
-#line 212 ".\\inc\\hw_gpio.h"
-
-#line 56 "project.h"
-#line 1 ".\\inc\\hw_types.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 63 ".\\inc\\hw_types.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 57 "project.h"
-#line 2 "project.c"
 #line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
  
  
@@ -18129,97 +17804,634 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 
  
 
+#line 4 "src/Uart_helper.h"
+#line 5 "src/Uart_helper.h"
+#line 6 "src/Uart_helper.h"
+#line 7 "src/Uart_helper.h"
+#line 8 "src/Uart_helper.h"
+#line 9 "src/Uart_helper.h"
+#line 10 "src/Uart_helper.h"
+
+
+void UartSetup(void);		
+
+
+int fputc(int ch, FILE *f);
+
+
+
+int fgetc(FILE *f);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 45 "project.h"
+
+#line 47 "project.h"
+#line 48 "project.h"
+#line 49 "project.h"
+#line 50 "project.h"
+#line 51 "project.h"
+#line 52 "project.h"
+#line 53 "project.h"
+#line 1 ".\\inc\\hw_gpio.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 79 ".\\inc\\hw_gpio.h"
+
+
+
+
+
+
+
+                                            
+
+
+
+
+
+
+
+
+
+                                            
+
+
+
+
+
+
+
+
+
+                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            
+
+                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            
+                                            
+                                            
+                                            
+                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 194 ".\\inc\\hw_gpio.h"
+                                            
+                                            
+                                            
+
+                                            
+
+                                            
+                                            
+                                            
+                                            
+                                            
+#line 212 ".\\inc\\hw_gpio.h"
+
+#line 54 "project.h"
+#line 1 ".\\inc\\hw_types.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 63 ".\\inc\\hw_types.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 55 "project.h"
+
+#line 1 "src/Uart_helper.h"
+#line 2 "src/Uart_helper.h"
+#line 3 "src/Uart_helper.h"
+#line 4 "src/Uart_helper.h"
+#line 5 "src/Uart_helper.h"
+#line 6 "src/Uart_helper.h"
+#line 7 "src/Uart_helper.h"
+#line 8 "src/Uart_helper.h"
+#line 9 "src/Uart_helper.h"
+#line 10 "src/Uart_helper.h"
+
+
+void UartSetup(void);		
+
+
+int fputc(int ch, FILE *f);
+
+
+
+int fgetc(FILE *f);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 57 "project.h"
+#line 1 "LED.h"
+#line 2 "LED.h"
+#line 3 "LED.h"
+#line 4 "LED.h"
+#line 5 "LED.h"
+#line 6 "LED.h"
+#line 7 "LED.h"
+#line 8 "LED.h"
+#line 9 "LED.h"
+#line 10 "LED.h"
+#line 58 "project.h"
+#line 1 "myGPIO.h"
+#line 2 "myGPIO.h"
+#line 3 "myGPIO.h"
+#line 4 "myGPIO.h"
+#line 5 "myGPIO.h"
+#line 6 "myGPIO.h"
+#line 7 "myGPIO.h"
+#line 8 "myGPIO.h"
+#line 9 "myGPIO.h"
+#line 10 "myGPIO.h"
+#line 11 "myGPIO.h"
+#line 12 "myGPIO.h"
+
+void setup_IO();
+void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
+#line 59 "project.h"
+
+
+#line 1 "HAL_Systick.h"
+#line 2 "HAL_Systick.h"
+#line 3 "HAL_Systick.h"
+#line 4 "HAL_Systick.h"
+#line 5 "HAL_Systick.h"
+
+#line 7 "HAL_Systick.h"
+
+#line 9 "HAL_Systick.h"
+#line 10 "HAL_Systick.h"
+#line 11 "HAL_Systick.h"
+
+#line 13 "HAL_Systick.h"
+#line 14 "HAL_Systick.h"
+#line 15 "HAL_Systick.h"
+#line 16 "HAL_Systick.h"
+
+void SetupSystickDN(void);
+void SysTickWaitDN(unsigned long);
+void SysTickWait10msDN(unsigned long);
+
+
+
+
+
+#line 62 "project.h"
+#line 1 "HAL_ADC.h"
+
+#line 3 "HAL_ADC.h"
+#line 4 "HAL_ADC.h"
+#line 5 "HAL_ADC.h"
+#line 6 "HAL_ADC.h"
+#line 7 "HAL_ADC.h"
+#line 8 "HAL_ADC.h"
+#line 9 "HAL_ADC.h"
+#line 10 "HAL_ADC.h"
+#line 11 "HAL_ADC.h"
+#line 12 "HAL_ADC.h"
+#line 13 "HAL_ADC.h"
+
+extern uint32_t ADC_Values[13];
+
+void SetupADC(void);
+void ADCReadChan(void);  
+
+#line 63 "project.h"
+
+#line 2 "project.c"
 #line 3 "project.c"
 #line 4 "project.c"
 
-
-
-
-
-
-
-#line 17 "project.c"
-
+#line 12 "project.c"
 
 void SetupHardware()
 {
+	UnlockPins();
 	UartSetup();
-
-}
-
-void UnlockPins()
-{
-	
-	(*((volatile uint32_t *)(0x40025000 + 0x00000520))) = 0x4C4F434B;
-	(*((volatile uint32_t *)(0x40025000 + 0x00000524))) = 0xFF;
-	(*((volatile uint32_t *)(0x40025000 + 0x00000520))) = 0; 
+	setup_IO();		
+	SetupSystickDN();
+	SetupADC();
 	
 }
 
 int  main(void)
+{		
+	SetupHardware();
+
+	char ctemp;
+	uint8_t temp;
+	volatile uint32_t ui32Loop;	
+while (1)
 {
+	printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n");
+		ctemp = getc((& __stdin));
+		printf("You entered %c\n\n",ctemp);
 		
-		uint8_t temp;
-    volatile uint32_t ui32Loop;
-	
-	
-	
-    
-		SysCtlPeripheralEnable(0xf0000805);
-    SetupHardware();
-
-		
-		
-    while(!SysCtlPeripheralReady(0xf0000805))
-    {
-    
+	switch (ctemp)
+			{
+			case '1':
+				
+				
+				pinReadAndWrite(ui32Loop, temp); 
+				break;	
+			
+			case '2':
+				
+				
+				printf("no idea\n\n");
+				break;			
+							
+			case '3':
+				
+				
+				setup_UART(ctemp);
+				break;
+			
+			case '4':
+				
+				
+				printf("Blue LED will stay on for 5 seconds?\n\n");		
+				SysTickWait10msDN(100);
+				break;
+			
+			case'5':
+				
+				
+				printf ("No idea\n\n");
+				break;
+			
+			case'6':
+				
+				
+				ADCReadChan();
+				break;
+			
+			default:				
+				printf("Ya done messed up, try again!\n\n");
+				GPIOPinWrite(0x40025000, 0x00000002, 0x0);  
+				GPIOPinWrite(0x40025000, 0x00000004, 0x0);  
+				GPIOPinWrite(0x40025000, 0x00000008, 0x0);  
+				break;		
 		}
-		
-		UnlockPins();
-    
-		
-    
-    GPIOPinTypeGPIOOutput(0x40025000, 0x00000008|0x00000004|0x00000002); 
-		GPIOPinTypeGPIOInput(0x40025000, 0x00000010|0x00000001); 
-		
-		GPIOPadConfigSet(0x40025000,0x00000001|0x00000010,0x00000001,0x0000000A);
-		
-		
-		int x = GPIOPinRead(0x40025000, 0x00000001);
-		 
-		
-			
-		
-    while(1)
-    {
-			x = GPIOPinRead(0x40025000, 0x00000001);
-			
-			while(x == 0)
-		{
-			  
-		
-			
-				UARTCharPut(0x4000C000, temp);
-			  temp++;
-				
-				
-        
-        GPIOPinWrite(0x40025000, 0x00000004, 0xF);
-
-
-        
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
-
-        
-        GPIOPinWrite(0x40025000, 0x00000004, 0x0);
-
-        
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
-				
-    }
-		}
+	}	
 }
+
+

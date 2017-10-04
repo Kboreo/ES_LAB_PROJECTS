@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.24.2.0
 Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Phillip Tesolin, LTU, LIC=----
+License Information: Kodey Boreo, Lawrence Technological University, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.24.1
@@ -17,23 +17,25 @@ Library Manager: ArmAr.exe V5.06 update 5 (build 528)
 Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
 CPU DLL:         SARMCM3.DLL V5.24.1
 Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      lmidk-agdi.dll V???
+Target DLL:      UL2CM3.DLL V1.160.3.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-C:\Users\ptesolin\Documents\GitHub\ES_LAB_PROJECTS\project.uvprojx
-Project File Date:  09/13/2017
+C:\Users\baske\Documents\ES_Lab\ES_LAB_PROJECTS\project.uvprojx
+Project File Date:  10/03/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'project'
+Build target 'project'
 creating preprocessor file for project.c...
 assembling startup_rvmdk.S...
-creating preprocessor file for Uart_helper.c...
-compiling Uart_helper.c...
-src\Uart_helper.h(11): warning:  #1-D: last line of file ends without a newline
-  void UartSetup2(void);	//sets up Uart for my configuration registers
-src\Uart_helper.c: 1 warning, 0 errors
+creating preprocessor file for LED.c...
+creating preprocessor file for myGPIO.c...
+creating preprocessor file for myUART.c...
+compiling LED.c...
+LED.c(21): warning:  #1-D: last line of file ends without a newline
+  }
+LED.c: 1 warning, 0 errors
 compiling project.c...
 driverlib/hibernate.h(229): warning:  #231-D: declaration is not visible outside of function
   extern void HibernateCalendarSet(struct tm *psTime);
@@ -43,14 +45,66 @@ driverlib/hibernate.h(231): warning:  #231-D: declaration is not visible outside
   extern void HibernateCalendarMatchSet(uint32_t ui32Index, struct tm *psTime);
 driverlib/hibernate.h(232): warning:  #231-D: declaration is not visible outside of function
   extern void HibernateCalendarMatchGet(uint32_t ui32Index, struct tm *psTime);
-src/Uart_helper.h(11): warning:  #1-D: last line of file ends without a newline
-  void UartSetup2(void);	//sets up Uart for my configuration registers
-project.c: 5 warnings, 0 errors
+myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg types
+  void setup_IO();
+myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
+  void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
+project.c(15): warning:  #223-D: function "UnlockPins" declared implicitly
+  	UnlockPins();
+project.c(53): warning:  #223-D: function "setup_UART" declared implicitly
+  				setup_UART(ctemp);
+project.c: 8 warnings, 0 errors
+creating preprocessor file for HAL_Systick.c...
+compiling myGPIO.c...
+myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg types
+  void setup_IO();
+myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
+  void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
+myGPIO.c(8): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DATA_R"  (declared at line 701 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_DATA_R       (*((volatile unsigned long *)0x400253FC))
+myGPIO.c(9): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DIR_R"  (declared at line 702 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_DIR_R        (*((volatile unsigned long *)0x40025400))
+myGPIO.c(10): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AFSEL_R"  (declared at line 710 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_AFSEL_R      (*((volatile unsigned long *)0x40025420))
+myGPIO.c(11): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PUR_R"  (declared at line 715 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_PUR_R        (*((volatile unsigned long *)0x40025510))
+myGPIO.c(12): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DEN_R"  (declared at line 718 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_DEN_R        (*((volatile unsigned long *)0x4002551C))
+myGPIO.c(13): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_LOCK_R"  (declared at line 719 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_LOCK_R       (*((volatile unsigned long *)0x40025520))
+myGPIO.c(14): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_CR_R"  (declared at line 720 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_CR_R         (*((volatile unsigned long *)0x40025524))
+myGPIO.c(15): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AMSEL_R"  (declared at line 721 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_AMSEL_R      (*((volatile unsigned long *)0x40025528))
+myGPIO.c(16): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PCTL_R"  (declared at line 722 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define GPIO_PORTF_PCTL_R       (*((volatile unsigned long *)0x4002552C))
+myGPIO.c(17): warning:  #47-D: incompatible redefinition of macro "SYSCTL_RCGC2_R"  (declared at line 2059 of ".\driverlib\../inc/tm4c123gh6pm.h")
+  #define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
+myGPIO.c(133): warning:  #1-D: last line of file ends without a newline
+  	
+myGPIO.c: 13 warnings, 0 errors
+compiling myUART.c...
+myUART.h(13): warning:  #1-D: last line of file ends without a newline
+  void setup_UART(char ctemp);
+myUART.c(43): warning:  #1-D: last line of file ends without a newline
+  	}
+myUART.c: 2 warnings, 0 errors
+creating preprocessor file for HAL_ADC.c...
+compiling HAL_Systick.c...
+creating preprocessor file for Uart_helper.c...
+compiling HAL_ADC.c...
+HAL_ADC.c(72): warning:  #223-D: function "SysTickWait10msDN" declared implicitly
+  	SysTickWait10msDN(10);
+HAL_ADC.c: 1 warning, 0 errors
+compiling Uart_helper.c...
+src\Uart_helper.c(73): warning:  #1-D: last line of file ends without a newline
+  // this function does the same thing as UartSetup(), but uses direct register access method
+src\Uart_helper.c: 1 warning, 0 errors
 linking...
-Program Size: Code=2008 RO-data=612 RW-data=0 ZI-data=256  
+Program Size: Code=7704 RO-data=1352 RW-data=8 ZI-data=312  
 FromELF: creating hex file...
 After Build - User command #1: fromelf --bin --output .\rvmdk\project.bin .\rvmdk\project.axf
-".\rvmdk\project.axf" - 0 Error(s), 6 Warning(s).
+".\rvmdk\project.axf" - 0 Error(s), 26 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -73,7 +127,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
