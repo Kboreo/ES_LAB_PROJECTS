@@ -6,6 +6,7 @@
 ".\rvmdk\myuart.o"
 ".\rvmdk\hal_systick.o"
 ".\rvmdk\hal_adc.o"
+".\rvmdk\mypwm.o"
 ".\inc\driverlib.lib"
 ".\rvmdk\uart_helper.o"
 --library_type=microlib --strict --scatter "project.sct"

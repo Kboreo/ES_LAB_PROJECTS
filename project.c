@@ -59,8 +59,8 @@ while (1)
 				break;	
 			
 			//PWM
-			case '2':				
-				printf("no idea\n\n");
+			case '2':								
+				pwmTest();
 				break;
 			
 			//Uart				

@@ -18368,6 +18368,18 @@ void SetupADC(void);
 void ADCReadChan(void);  
 
 #line 63 "project.h"
+#line 1 "myPWM.h"
+#line 2 "myPWM.h"
+#line 3 "myPWM.h"
+#line 4 "myPWM.h"
+#line 5 "myPWM.h"
+#line 6 "myPWM.h"
+#line 7 "myPWM.h"
+#line 8 "myPWM.h"
+#line 9 "myPWM.h"
+#line 10 "myPWM.h"
+#line 11 "myPWM.h"
+#line 64 "project.h"
 
 #line 15 "project.c"
 #line 16 "project.c"
@@ -18412,7 +18424,8 @@ while (1)
 			
 			
 			case '2':				
-				printf("no idea\n\n");
+				
+				pwmTest();
 				break;
 			
 			

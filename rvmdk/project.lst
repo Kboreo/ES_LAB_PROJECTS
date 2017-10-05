@@ -64750,6 +64750,20 @@ Nvoid SetupADC(void);
 Nvoid ADCReadChan(void);  
 N
 L 63 "project.h" 2
+N#include "myPWM.h"
+L 1 "myPWM.h" 1
+N#include "driverlib/pin_map.h"
+N#include <stdint.h>
+N#include <stdbool.h>
+N#include "inc/hw_gpio.h"
+N#include "inc/hw_types.h"
+N#include "inc/hw_memmap.h"
+N#include "driverlib/sysctl.h"
+N#include "driverlib/pin_map.h"
+N#include "driverlib/gpio.h"
+W "myPWM.h" 10 27 last line of file ends without a newline
+N#include "driverlib/pwm.h"
+L 64 "project.h" 2
 N
 L 15 "project.c" 2
 N#include <stdio.h>
@@ -64802,12 +64816,14 @@ N				break;
 N			
 N			//PWM
 N			case '2':				
-N				printf("no idea\n\n");
+N				//printf("no idea\n\n");
+W "project.c" 64 5 function "pwmTest" declared implicitly
+N				pwmTest();
 N				break;
 N			
 N			//Uart				
 N			case '3':
-W "project.c" 68 5 function "setup_UART" declared implicitly
+W "project.c" 69 5 function "setup_UART" declared implicitly
 N				setup_UART(ctemp);
 N				break;
 N			
