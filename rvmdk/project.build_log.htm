@@ -62,10 +62,9 @@ myGPIO.c(16): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PC
   #define GPIO_PORTF_PCTL_R       (*((volatile unsigned long *)0x4002552C))
 myGPIO.c(17): warning:  #47-D: incompatible redefinition of macro "SYSCTL_RCGC2_R"  (declared at line 2059 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
-myGPIO.c(133): warning:  #1-D: last line of file ends without a newline
+myGPIO.c(132): warning:  #1-D: last line of file ends without a newline
   	
 myGPIO.c: 13 warnings, 0 errors
-creating preprocessor file for HAL_ADC.c...
 compiling project.c...
 driverlib/hibernate.h(229): warning:  #231-D: declaration is not visible outside of function
   extern void HibernateCalendarSet(struct tm *psTime);
@@ -79,27 +78,25 @@ myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg type
   void setup_IO();
 myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
   void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-myPWM.h(10): warning:  #1-D: last line of file ends without a newline
-  #include "driverlib/pwm.h"
 project.c(30): warning:  #223-D: function "UnlockPins" declared implicitly
   	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
+project.c(35): warning:  #223-D: function "setupPWM" declared implicitly
+  	setupPWM(); //Sets up PWM
 project.c(64): warning:  #223-D: function "pwmTest" declared implicitly
   				pwmTest();
 project.c(69): warning:  #223-D: function "setup_UART" declared implicitly
   				setup_UART(ctemp);
 project.c: 10 warnings, 0 errors
+creating preprocessor file for HAL_ADC.c...
 compiling myUART.c...
 myUART.h(13): warning:  #1-D: last line of file ends without a newline
   void setup_UART(char ctemp);
 myUART.c(46): warning:  #1-D: last line of file ends without a newline
   	}
 myUART.c: 2 warnings, 0 errors
-creating preprocessor file for myPWM.c...
 compiling HAL_Systick.c...
+creating preprocessor file for myPWM.c...
 compiling myPWM.c...
-myPWM.h(10): warning:  #1-D: last line of file ends without a newline
-  #include "driverlib/pwm.h"
-myPWM.c: 1 warning, 0 errors
 creating preprocessor file for Uart_helper.c...
 compiling HAL_ADC.c...
 HAL_ADC.c(72): warning:  #223-D: function "SysTickWait10msDN" declared implicitly
@@ -110,10 +107,10 @@ src\Uart_helper.c(73): warning:  #1-D: last line of file ends without a newline
   // this function does the same thing as UartSetup(), but uses direct register access method
 src\Uart_helper.c: 1 warning, 0 errors
 linking...
-Program Size: Code=8096 RO-data=1352 RW-data=8 ZI-data=312  
+Program Size: Code=8252 RO-data=1432 RW-data=8 ZI-data=312  
 FromELF: creating hex file...
 After Build - User command #1: fromelf --bin --output .\rvmdk\project.bin .\rvmdk\project.axf
-".\rvmdk\project.axf" - 0 Error(s), 29 Warning(s).
+".\rvmdk\project.axf" - 0 Error(s), 28 Warning(s).
 
 <h2>Software Packages used:</h2>
 

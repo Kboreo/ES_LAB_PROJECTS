@@ -18379,6 +18379,8 @@ void ADCReadChan(void);
 #line 9 "myPWM.h"
 #line 10 "myPWM.h"
 #line 11 "myPWM.h"
+#line 12 "myPWM.h"
+#line 13 "myPWM.h"
 #line 64 "project.h"
 
 #line 15 "project.c"
@@ -18396,6 +18398,7 @@ void SetupHardware()
 	setup_IO();		
 	SetupSystickDN();	
 	SetupADC();	
+	setupPWM(); 
 }
 
 
@@ -18423,8 +18426,7 @@ while (1)
 				break;	
 			
 			
-			case '2':				
-				
+			case '2':								
 				pwmTest();
 				break;
 			

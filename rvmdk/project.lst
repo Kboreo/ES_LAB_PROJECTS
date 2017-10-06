@@ -64754,6 +64754,7 @@ N#include "myPWM.h"
 L 1 "myPWM.h" 1
 N#include "driverlib/pin_map.h"
 N#include <stdint.h>
+N#include <stdio.h>
 N#include <stdbool.h>
 N#include "inc/hw_gpio.h"
 N#include "inc/hw_types.h"
@@ -64761,8 +64762,8 @@ N#include "inc/hw_memmap.h"
 N#include "driverlib/sysctl.h"
 N#include "driverlib/pin_map.h"
 N#include "driverlib/gpio.h"
-W "myPWM.h" 10 27 last line of file ends without a newline
 N#include "driverlib/pwm.h"
+N#include "driverlib/uart.h"
 L 64 "project.h" 2
 N
 L 15 "project.c" 2
@@ -64787,6 +64788,8 @@ N	UartSetup();	//Sets up Uart communication using RealTerm
 N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
 N	SetupSystickDN();	//Sets up the timers and hardware to use systick
 N	SetupADC();	//Hardware setup for ADC 
+W "project.c" 35 2 function "setupPWM" declared implicitly
+N	setupPWM(); //Sets up PWM
 N}
 N
 N//Main Code
@@ -64815,8 +64818,7 @@ N				pinReadAndWrite(ui32Loop, temp);
 N				break;	
 N			
 N			//PWM
-N			case '2':				
-N				//printf("no idea\n\n");
+N			case '2':								
 W "project.c" 64 5 function "pwmTest" declared implicitly
 N				pwmTest();
 N				break;

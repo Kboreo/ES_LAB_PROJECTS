@@ -2,7 +2,7 @@
 **
 ** Module Name:   project.c
 **
-** Module Description: C file 
+** Module Description: Main Project C file 
 **
 **********************************************************************************************************************************
 **
@@ -32,6 +32,7 @@ void SetupHardware()  //Function that sets up all of the pins,ports, etc... that
 	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
 	SetupSystickDN();	//Sets up the timers and hardware to use systick
 	SetupADC();	//Hardware setup for ADC 
+	setupPWM(); //Sets up PWM
 }
 
 //Main Code
@@ -43,7 +44,7 @@ int  main(void)
 	volatile uint32_t ui32Loop; //32-bit int used for multiple functions 
 	
 	SetupHardware();
-	
+		
 //While loop for main user menu	
 while (1)
 {
