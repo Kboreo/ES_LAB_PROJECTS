@@ -1,8 +1,22 @@
+/*********************************************************************************************************************************
+**
+** Module Name:   HAL_ADC.h
+**
+** Module Description: Sets up all of the hardware that is used in ADC
+**
+**********************************************************************************************************************************
+**
+** Author(s):		Kodey Boreo, Phillip Tesolin 
+**
+**********************************************************************************************************************************/
+
+//Includes
 #include "HAL_ADC.h"
 
+//Variables
 uint32_t ADC_Values[13];
 
-
+//Function Prototypes
 void SetupADCPins(void);
 
 //set up for 2 pots and accelerometer + 1 extra
@@ -18,10 +32,9 @@ void SetupADCPins()
 	
 }
 
+//Function that sets the HW up for the ADC module
 void SetupADC()
-{
-	
-	
+{	
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
 	while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE))
 	{
@@ -45,7 +58,6 @@ void SetupADC()
 	//
 	ADCSequenceDisable(ADC0_BASE,0);
 	ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
-	//ADCSequenceStepConfigure(ADC0_BASE, 0, 0,	ADC_CTL_IE | ADC_CTL_END | ADC_CTL_CH1 | ADC_CTL_CH2| ADC_CTL_CH4| ADC_CTL_CH5| ADC_CTL_CH6| ADC_CTL_CH7);
 	ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_CH0 );
   ADCSequenceStepConfigure(ADC0_BASE, 0, 1, ADC_CTL_CH1 );	
   ADCSequenceStepConfigure(ADC0_BASE, 0, 2, ADC_CTL_CH2 );	
@@ -53,30 +65,20 @@ void SetupADC()
 	ADCSequenceStepConfigure(ADC0_BASE, 0, 4, ADC_CTL_CH5 );	
 	ADCSequenceStepConfigure(ADC0_BASE, 0, 5, ADC_CTL_CH6 );	
 	ADCSequenceStepConfigure(ADC0_BASE, 0, 6, ADC_CTL_CH7 | ADC_CTL_END);	
-	
-	//ADCSequenceStepConfigure(ADC0_BASE, 0, 0,	ADC_CTL_IE | ADC_CTL_END | ADC_CTL_CH1 );
-	
-	
 	ADCSequenceEnable(ADC0_BASE, 0);
-
-	SetupADCPins(); //setup the GPIO
-		
+	SetupADCPins(); //setup the GPIO		
 }
 
+//Function to read the ADC value from the Channel
 void ADCReadChan()
-{
-	
-	
-	
-	
-	SysTickWait10msDN(10);
+{	
+	SysTickWait10msDN(10); //Delay Function
 	printf("\n\n");
 	int32_t scratch;
 	//
 	// Trigger the sample sequence.
 	//
 	ADCProcessorTrigger(ADC0_BASE, 0);
-
 	//
 	// Wait until the sample sequence has completed.
 	//
@@ -86,8 +88,7 @@ void ADCReadChan()
 	}
 	//
 	// Read the value from the ADC.
-	//
-	
+	//	
 	scratch = (ADCSequenceDataGet(ADC0_BASE, 0, ADC_Values));
 	if (scratch < 13)
 	{
@@ -95,14 +96,9 @@ void ADCReadChan()
 	}
 		 
 	double x;	
-		x = ADC_Values[0];		
-		x = x * .000807;
-		
-		printf("Voltage on PE3 is, %.2fV \n\n", x);
-			
-
-	
-		 
+	x = ADC_Values[0];		
+	x = x * .000807;  //Multiple the x value with the "offset" to get it to the correct value		
+	printf("Voltage on PE3 is, %.2fV \n\n", x);  //Displays voltage to the End user		 
 }
 
 

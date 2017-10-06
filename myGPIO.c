@@ -1,3 +1,14 @@
+/*********************************************************************************************************************************
+**
+** Module Name:   myGPIO.c
+**
+** Module Description: Handles the GPIO Module for the project
+**
+**********************************************************************************************************************************
+**
+** Author(s):		Kodey Boreo, Phillip Tesolin 
+**
+**********************************************************************************************************************************/
 #include <stdio.h>
 #include <stdint.h>
 #include "myGPIO.h"
@@ -31,7 +42,6 @@ void setup_IO()
   //enable the GPIO pin for digital function.
   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 3 and 2 as output
 	GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 and 0 as input
-	//GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3);
 	//these two switches need an internal pull up on pins
 	GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF))
@@ -65,10 +75,6 @@ void PortF_Init(void)
   GPIO_PORTF_PUR_R = 0x11;          // enable pullup resistors on PF4,PF0       
   GPIO_PORTF_DEN_R = 0x1F;          // 7) enable digital pins PF4-PF0        
 }
-
-
-		
-
 
 void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp)
 {
@@ -124,7 +130,7 @@ void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp)
 		 {
 			 if (y == 0)
 			 {
-			i = 0;
+					i = 0;
 			 }
 		 }				
     }		

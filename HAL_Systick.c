@@ -1,18 +1,21 @@
+/*********************************************************************************************************************************
+**
+** Module Name:   HAL_Systick.c
+**
+** Module Description: All of the code that has to do with Systick
+**
+**********************************************************************************************************************************
+**
+** Author(s):		Kodey Boreo, Phillip Tesolin 
+**
+**********************************************************************************************************************************/
 #include "HAL_Systick.h"
 
 void SetupSystickDN()
 {
-  //NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
-  //NVIC_ST_RELOAD_R = NVIC_ST_RELOAD_M;  // maximum reload value
-  //NVIC_ST_CURRENT_R = 0;                // any write to current clears it
-	
-                                        // enable SysTick with core clock
-  //NVIC_ST_CTRL_R = NVIC_ST_CTRL_ENABLE+NVIC_ST_CTRL_CLK_SRC;	
-	
 	SysTickPeriodSet(NVIC_ST_RELOAD_M);
 	SysTickEnable();
 }
-
 
 // Time delay using busy wait.
 // The delay parameter is in units of the 80 MHz core clock. (12.5 ns)

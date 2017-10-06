@@ -37,8 +37,7 @@ int  main(void)
 	
 	SetupHardware();
 	mainMenu(ctemp, temp, ui32Loop);
-}
-	
+}	
 	
 //Main menu that displays to the UART terminal for a HMI	
 void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
@@ -70,7 +69,7 @@ while (1)
 			
 			//systick
 			case '4':				
-				printf("Blue LED will stay on for 5 seconds?\n\n");		
+				printf("Blue LED will stay on for 5 seconds!\n\n");		
 				SysTickWait10msDN(100);
 				break;
 			
@@ -102,8 +101,7 @@ void SetupHardware(void)
 	UartSetup();	//Sets up Uart communication using RealTerm
 	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
 	SetupSystickDN();	//Sets up the timers and hardware to use systick
-	SetupADC();	//Hardware setup for ADC 
-	
+	SetupADC();	//Hardware setup for ADC	
 }
 
 

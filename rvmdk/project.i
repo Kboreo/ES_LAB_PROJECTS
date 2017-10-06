@@ -18469,7 +18469,6 @@ void SetupHardware(void)
 	setup_IO();		
 	SetupSystickDN();	
 	SetupADC();	
-	
 }
 
 

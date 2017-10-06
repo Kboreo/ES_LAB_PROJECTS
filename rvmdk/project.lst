@@ -64865,8 +64865,7 @@ N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
 N	UartSetup();	//Sets up Uart communication using RealTerm
 N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
 N	SetupSystickDN();	//Sets up the timers and hardware to use systick
-N	SetupADC();	//Hardware setup for ADC 
-N	
+N	SetupADC();	//Hardware setup for ADC	
 N}
 N
 N
