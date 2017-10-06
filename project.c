@@ -24,16 +24,8 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #endif
 
 //Function Protoypes
-
-void SetupHardware()  //Function that sets up all of the pins,ports, etc... that are used in the program
-{
-	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
-	UartSetup();	//Sets up Uart communication using RealTerm
-	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
-	SetupSystickDN();	//Sets up the timers and hardware to use systick
-	SetupADC();	//Hardware setup for ADC 
-	setupPWM(); //Sets up PWM
-}
+void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop);  //Main menu that displays to the UART terminal for a HMI
+void SetupHardware(void);  //Function that sets up all of the pins,ports, etc... that are used in the program
 
 //Main Code
 int  main(void)
@@ -44,8 +36,14 @@ int  main(void)
 	volatile uint32_t ui32Loop; //32-bit int used for multiple functions 
 	
 	SetupHardware();
-		
-//While loop for main user menu	
+	mainMenu(ctemp, temp, ui32Loop);
+}
+	
+	
+//Main menu that displays to the UART terminal for a HMI	
+void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
+{	
+	//While loop for main user menu	
 while (1)
 {
 		printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n"); //Askes user what function they would like to use.
@@ -60,7 +58,8 @@ while (1)
 				break;	
 			
 			//PWM
-			case '2':								
+			case '2':			
+				setupPWM(); //Sets up PWM
 				pwmTest();
 				break;
 			
@@ -95,5 +94,19 @@ while (1)
 		}
 	}	
 }
+
+//Function that sets up all of the pins,ports, etc... that are used in the program
+void SetupHardware(void)  
+{
+	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
+	UartSetup();	//Sets up Uart communication using RealTerm
+	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
+	SetupSystickDN();	//Sets up the timers and hardware to use systick
+	SetupADC();	//Hardware setup for ADC 
+	
+}
+
+
+
 
 

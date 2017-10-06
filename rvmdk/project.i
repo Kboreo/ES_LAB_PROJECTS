@@ -18390,16 +18390,8 @@ void ADCReadChan(void);
 #line 25 "project.c"
 
 
-
-void SetupHardware()  
-{
-	UnlockPins();	
-	UartSetup();	
-	setup_IO();		
-	SetupSystickDN();	
-	SetupADC();	
-	setupPWM(); 
-}
+void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop);  
+void SetupHardware(void);  
 
 
 int  main(void)
@@ -18410,8 +18402,14 @@ int  main(void)
 	volatile uint32_t ui32Loop; 
 	
 	SetupHardware();
+	mainMenu(ctemp, temp, ui32Loop);
+}
+	
 	
 
+void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
+{	
+	
 while (1)
 {
 		printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n"); 
@@ -18426,7 +18424,8 @@ while (1)
 				break;	
 			
 			
-			case '2':								
+			case '2':			
+				setupPWM(); 
 				pwmTest();
 				break;
 			
@@ -18461,5 +18460,19 @@ while (1)
 		}
 	}	
 }
+
+
+void SetupHardware(void)  
+{
+	UnlockPins();	
+	UartSetup();	
+	setup_IO();		
+	SetupSystickDN();	
+	SetupADC();	
+	
+}
+
+
+
 
 

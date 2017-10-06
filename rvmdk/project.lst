@@ -3,7 +3,7 @@ N/******************************************************************************
 N**
 N** Module Name:   project.c
 N**
-N** Module Description: C file 
+N** Module Description: Main Project C file 
 N**
 N**********************************************************************************************************************************
 N**
@@ -64779,18 +64779,8 @@ S}
 N#endif
 N
 N//Function Protoypes
-N
-Nvoid SetupHardware()  //Function that sets up all of the pins,ports, etc... that are used in the program
-N{
-W "project.c" 30 2 function "UnlockPins" declared implicitly
-N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
-N	UartSetup();	//Sets up Uart communication using RealTerm
-N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
-N	SetupSystickDN();	//Sets up the timers and hardware to use systick
-N	SetupADC();	//Hardware setup for ADC 
-W "project.c" 35 2 function "setupPWM" declared implicitly
-N	setupPWM(); //Sets up PWM
-N}
+Nvoid mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop);  //Main menu that displays to the UART terminal for a HMI
+Nvoid SetupHardware(void);  //Function that sets up all of the pins,ports, etc... that are used in the program
 N
 N//Main Code
 Nint  main(void)
@@ -64801,8 +64791,14 @@ N	uint8_t temp;	//Temp 8-bit int used for gpio functions
 N	volatile uint32_t ui32Loop; //32-bit int used for multiple functions 
 N	
 N	SetupHardware();
+N	mainMenu(ctemp, temp, ui32Loop);
+N}
 N	
-N//While loop for main user menu	
+N	
+N//Main menu that displays to the UART terminal for a HMI	
+Nvoid mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
+N{	
+N	//While loop for main user menu	
 Nwhile (1)
 N{
 N		printf("What function would you like to test?\n 1.GPIO\n 2.PWM\n 3.UART\n 4.Systick\n 5.NVIC\n 6.ADC\n"); //Askes user what function they would like to use.
@@ -64818,14 +64814,16 @@ N				pinReadAndWrite(ui32Loop, temp);
 N				break;	
 N			
 N			//PWM
-N			case '2':								
-W "project.c" 64 5 function "pwmTest" declared implicitly
+N			case '2':			
+W "project.c" 62 5 function "setupPWM" declared implicitly
+N				setupPWM(); //Sets up PWM
+W "project.c" 63 5 function "pwmTest" declared implicitly
 N				pwmTest();
 N				break;
 N			
 N			//Uart				
 N			case '3':
-W "project.c" 69 5 function "setup_UART" declared implicitly
+W "project.c" 68 5 function "setup_UART" declared implicitly
 N				setup_UART(ctemp);
 N				break;
 N			
@@ -64858,5 +64856,20 @@ N				break;
 N		}
 N	}	
 N}
+N
+N//Function that sets up all of the pins,ports, etc... that are used in the program
+Nvoid SetupHardware(void)  
+N{
+W "project.c" 101 2 function "UnlockPins" declared implicitly
+N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
+N	UartSetup();	//Sets up Uart communication using RealTerm
+N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.
+N	SetupSystickDN();	//Sets up the timers and hardware to use systick
+N	SetupADC();	//Hardware setup for ADC 
+N	
+N}
+N
+N
+N
 N
 N

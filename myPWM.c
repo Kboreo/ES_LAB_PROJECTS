@@ -60,7 +60,6 @@ void delayMS(int ms)
     SysCtlDelay((SysCtlClockGet()/(3*1000))*ms);
 }
 
-
 void pwmTest(void)
 {	
 	//Fade
@@ -100,6 +99,7 @@ void pwmTest(void)
 			 if (y == 0)
 			 {
 					i = 0;
+				 PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, false); //Disable ports for PWM so ports can be used for other modules.
 			 }
 		 }
 		
@@ -122,11 +122,5 @@ void pwmTest(void)
 			}
     }        
 			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,pwmNow);  //Set the pulse width to the new value, pwmNow.      
-    }
-	
-		
-		
-	
-	
-	
+    }	
 }

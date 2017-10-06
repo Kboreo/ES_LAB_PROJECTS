@@ -78,14 +78,14 @@ myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg type
   void setup_IO();
 myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
   void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-project.c(30): warning:  #223-D: function "UnlockPins" declared implicitly
-  	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
-project.c(35): warning:  #223-D: function "setupPWM" declared implicitly
-  	setupPWM(); //Sets up PWM
-project.c(64): warning:  #223-D: function "pwmTest" declared implicitly
+project.c(62): warning:  #223-D: function "setupPWM" declared implicitly
+  				setupPWM(); //Sets up PWM
+project.c(63): warning:  #223-D: function "pwmTest" declared implicitly
   				pwmTest();
-project.c(69): warning:  #223-D: function "setup_UART" declared implicitly
+project.c(68): warning:  #223-D: function "setup_UART" declared implicitly
   				setup_UART(ctemp);
+project.c(101): warning:  #223-D: function "UnlockPins" declared implicitly
+  	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
 project.c: 10 warnings, 0 errors
 creating preprocessor file for HAL_ADC.c...
 compiling myUART.c...
@@ -94,8 +94,8 @@ myUART.h(13): warning:  #1-D: last line of file ends without a newline
 myUART.c(46): warning:  #1-D: last line of file ends without a newline
   	}
 myUART.c: 2 warnings, 0 errors
-compiling HAL_Systick.c...
 creating preprocessor file for myPWM.c...
+compiling HAL_Systick.c...
 compiling myPWM.c...
 creating preprocessor file for Uart_helper.c...
 compiling HAL_ADC.c...
@@ -107,7 +107,7 @@ src\Uart_helper.c(73): warning:  #1-D: last line of file ends without a newline
   // this function does the same thing as UartSetup(), but uses direct register access method
 src\Uart_helper.c: 1 warning, 0 errors
 linking...
-Program Size: Code=8252 RO-data=1432 RW-data=8 ZI-data=312  
+Program Size: Code=8276 RO-data=1432 RW-data=8 ZI-data=312  
 FromELF: creating hex file...
 After Build - User command #1: fromelf --bin --output .\rvmdk\project.bin .\rvmdk\project.axf
 ".\rvmdk\project.axf" - 0 Error(s), 28 Warning(s).
