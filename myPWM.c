@@ -100,6 +100,7 @@ void pwmTest(void)
 			 {
 					i = 0;
 				 PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, false); //Disable ports for PWM so ports can be used for other modules.
+				 GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2); // Re-enable pin 2 on portf for GPIO usage on other modules.
 			 }
 		 }
 		

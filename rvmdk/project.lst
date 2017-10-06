@@ -64792,8 +64792,7 @@ N	volatile uint32_t ui32Loop; //32-bit int used for multiple functions
 N	
 N	SetupHardware();
 N	mainMenu(ctemp, temp, ui32Loop);
-N}
-N	
+N}	
 N	
 N//Main menu that displays to the UART terminal for a HMI	
 Nvoid mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
@@ -64815,21 +64814,21 @@ N				break;
 N			
 N			//PWM
 N			case '2':			
-W "project.c" 62 5 function "setupPWM" declared implicitly
+W "project.c" 61 5 function "setupPWM" declared implicitly
 N				setupPWM(); //Sets up PWM
-W "project.c" 63 5 function "pwmTest" declared implicitly
+W "project.c" 62 5 function "pwmTest" declared implicitly
 N				pwmTest();
 N				break;
 N			
 N			//Uart				
 N			case '3':
-W "project.c" 68 5 function "setup_UART" declared implicitly
+W "project.c" 67 5 function "setup_UART" declared implicitly
 N				setup_UART(ctemp);
 N				break;
 N			
 N			//systick
 N			case '4':				
-N				printf("Blue LED will stay on for 5 seconds?\n\n");		
+N				printf("Blue LED will stay on for 5 seconds!\n\n");		
 N				SysTickWait10msDN(100);
 N				break;
 N			
@@ -64860,7 +64859,7 @@ N
 N//Function that sets up all of the pins,ports, etc... that are used in the program
 Nvoid SetupHardware(void)  
 N{
-W "project.c" 101 2 function "UnlockPins" declared implicitly
+W "project.c" 100 2 function "UnlockPins" declared implicitly
 N	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
 N	UartSetup();	//Sets up Uart communication using RealTerm
 N	setup_IO();		//UnlockPins();		//Function that unlocks certain pins that are needed.

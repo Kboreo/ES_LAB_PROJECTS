@@ -18403,8 +18403,7 @@ int  main(void)
 	
 	SetupHardware();
 	mainMenu(ctemp, temp, ui32Loop);
-}
-	
+}	
 	
 
 void mainMenu(char ctemp,uint8_t temp,uint32_t ui32Loop)
@@ -18436,7 +18435,7 @@ while (1)
 			
 			
 			case '4':				
-				printf("Blue LED will stay on for 5 seconds?\n\n");		
+				printf("Blue LED will stay on for 5 seconds!\n\n");		
 				SysTickWait10msDN(100);
 				break;
 			

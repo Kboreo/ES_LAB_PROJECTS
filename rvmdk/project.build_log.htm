@@ -42,27 +42,27 @@ myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg type
   void setup_IO();
 myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
   void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-myGPIO.c(8): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DATA_R"  (declared at line 701 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(19): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DATA_R"  (declared at line 701 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_DATA_R       (*((volatile unsigned long *)0x400253FC))
-myGPIO.c(9): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DIR_R"  (declared at line 702 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(20): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DIR_R"  (declared at line 702 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_DIR_R        (*((volatile unsigned long *)0x40025400))
-myGPIO.c(10): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AFSEL_R"  (declared at line 710 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(21): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AFSEL_R"  (declared at line 710 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_AFSEL_R      (*((volatile unsigned long *)0x40025420))
-myGPIO.c(11): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PUR_R"  (declared at line 715 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(22): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PUR_R"  (declared at line 715 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_PUR_R        (*((volatile unsigned long *)0x40025510))
-myGPIO.c(12): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DEN_R"  (declared at line 718 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(23): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_DEN_R"  (declared at line 718 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_DEN_R        (*((volatile unsigned long *)0x4002551C))
-myGPIO.c(13): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_LOCK_R"  (declared at line 719 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(24): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_LOCK_R"  (declared at line 719 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_LOCK_R       (*((volatile unsigned long *)0x40025520))
-myGPIO.c(14): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_CR_R"  (declared at line 720 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(25): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_CR_R"  (declared at line 720 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_CR_R         (*((volatile unsigned long *)0x40025524))
-myGPIO.c(15): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AMSEL_R"  (declared at line 721 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(26): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_AMSEL_R"  (declared at line 721 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_AMSEL_R      (*((volatile unsigned long *)0x40025528))
-myGPIO.c(16): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PCTL_R"  (declared at line 722 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(27): warning:  #47-D: incompatible redefinition of macro "GPIO_PORTF_PCTL_R"  (declared at line 722 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define GPIO_PORTF_PCTL_R       (*((volatile unsigned long *)0x4002552C))
-myGPIO.c(17): warning:  #47-D: incompatible redefinition of macro "SYSCTL_RCGC2_R"  (declared at line 2059 of ".\driverlib\../inc/tm4c123gh6pm.h")
+myGPIO.c(28): warning:  #47-D: incompatible redefinition of macro "SYSCTL_RCGC2_R"  (declared at line 2059 of ".\driverlib\../inc/tm4c123gh6pm.h")
   #define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
-myGPIO.c(132): warning:  #1-D: last line of file ends without a newline
+myGPIO.c(138): warning:  #1-D: last line of file ends without a newline
   	
 myGPIO.c: 13 warnings, 0 errors
 compiling project.c...
@@ -78,20 +78,20 @@ myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg type
   void setup_IO();
 myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
   void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-project.c(62): warning:  #223-D: function "setupPWM" declared implicitly
+project.c(61): warning:  #223-D: function "setupPWM" declared implicitly
   				setupPWM(); //Sets up PWM
-project.c(63): warning:  #223-D: function "pwmTest" declared implicitly
+project.c(62): warning:  #223-D: function "pwmTest" declared implicitly
   				pwmTest();
-project.c(68): warning:  #223-D: function "setup_UART" declared implicitly
+project.c(67): warning:  #223-D: function "setup_UART" declared implicitly
   				setup_UART(ctemp);
-project.c(101): warning:  #223-D: function "UnlockPins" declared implicitly
+project.c(100): warning:  #223-D: function "UnlockPins" declared implicitly
   	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
 project.c: 10 warnings, 0 errors
 creating preprocessor file for HAL_ADC.c...
 compiling myUART.c...
 myUART.h(13): warning:  #1-D: last line of file ends without a newline
   void setup_UART(char ctemp);
-myUART.c(46): warning:  #1-D: last line of file ends without a newline
+myUART.c(60): warning:  #1-D: last line of file ends without a newline
   	}
 myUART.c: 2 warnings, 0 errors
 creating preprocessor file for myPWM.c...
@@ -107,7 +107,7 @@ src\Uart_helper.c(73): warning:  #1-D: last line of file ends without a newline
   // this function does the same thing as UartSetup(), but uses direct register access method
 src\Uart_helper.c: 1 warning, 0 errors
 linking...
-Program Size: Code=8244 RO-data=1432 RW-data=8 ZI-data=312  
+Program Size: Code=8252 RO-data=1432 RW-data=8 ZI-data=312  
 FromELF: creating hex file...
 After Build - User command #1: fromelf --bin --output .\rvmdk\project.bin .\rvmdk\project.axf
 ".\rvmdk\project.axf" - 0 Error(s), 28 Warning(s).

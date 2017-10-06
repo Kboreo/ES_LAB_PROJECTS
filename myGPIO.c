@@ -40,7 +40,7 @@ void setup_IO()
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	//Enable the GPIO pin for the LED (PF3).  Set the direction as output, and
   //enable the GPIO pin for digital function.
-  GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 3 and 2 as output
+  GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1); // set pin 3,2, and 1 as output
 	GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4|GPIO_PIN_0); // set pin 4 and 0 as input
 	//these two switches need an internal pull up on pins
 	GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_0|GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);//set internal pullup R for pin 0 and 4
