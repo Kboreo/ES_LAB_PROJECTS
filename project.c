@@ -137,3 +137,9 @@ uint32_t I2CReceive(uint32_t slave_addr, uint8_t reg)
     //return data pulled from the specified register
     return I2CMasterDataGet(I2C0_BASE);
 }
+
+int main(void)
+{
+	
+	
+}
