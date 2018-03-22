@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.24.2.0
 Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Kodey Boreo, Lawrence Technological University, LIC=----
+License Information: Phillip Tesolin, LTU, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.24.1
@@ -21,22 +21,22 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-C:\Users\baske\Documents\ES_Lab\ES_LAB_PROJECTS\project.uvprojx
-Project File Date:  10/05/2017
+C:\Users\ptesolin\Documents\GitHub\ADC\ES_LAB_PROJECTS\project.uvprojx
+Project File Date:  11/16/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'project'
 creating preprocessor file for project.c...
 assembling startup_rvmdk.S...
+compiling project.c...
 creating preprocessor file for LED.c...
 creating preprocessor file for myGPIO.c...
-creating preprocessor file for myUART.c...
 compiling LED.c...
 LED.c(33): warning:  #1-D: last line of file ends without a newline
   }
 LED.c: 1 warning, 0 errors
-creating preprocessor file for HAL_Systick.c...
+creating preprocessor file for myUART.c...
 compiling myGPIO.c...
 myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg types
   void setup_IO();
@@ -65,52 +65,32 @@ myGPIO.c(28): warning:  #47-D: incompatible redefinition of macro "SYSCTL_RCGC2_
 myGPIO.c(138): warning:  #1-D: last line of file ends without a newline
   	
 myGPIO.c: 13 warnings, 0 errors
-compiling project.c...
-driverlib/hibernate.h(229): warning:  #231-D: declaration is not visible outside of function
-  extern void HibernateCalendarSet(struct tm *psTime);
-driverlib/hibernate.h(230): warning:  #231-D: declaration is not visible outside of function
-  extern int HibernateCalendarGet(struct tm *psTime);
-driverlib/hibernate.h(231): warning:  #231-D: declaration is not visible outside of function
-  extern void HibernateCalendarMatchSet(uint32_t ui32Index, struct tm *psTime);
-driverlib/hibernate.h(232): warning:  #231-D: declaration is not visible outside of function
-  extern void HibernateCalendarMatchGet(uint32_t ui32Index, struct tm *psTime);
-myGPIO.h(13): warning:  #1295-D: Deprecated declaration setup_IO - give arg types
-  void setup_IO();
-myGPIO.h(14): warning:  #1-D: last line of file ends without a newline
-  void pinReadAndWrite(uint32_t ui32Loop,uint8_t temp);
-project.c(61): warning:  #223-D: function "setupPWM" declared implicitly
-  				setupPWM(); //Sets up PWM
-project.c(62): warning:  #223-D: function "pwmTest" declared implicitly
-  				pwmTest();
-project.c(67): warning:  #223-D: function "setup_UART" declared implicitly
-  				setup_UART(ctemp);
-project.c(100): warning:  #223-D: function "UnlockPins" declared implicitly
-  	UnlockPins();	//Unlocks pins that are used so they can be inputs or outputs
-project.c: 10 warnings, 0 errors
-creating preprocessor file for HAL_ADC.c...
+creating preprocessor file for HAL_Systick.c...
 compiling myUART.c...
 myUART.h(13): warning:  #1-D: last line of file ends without a newline
   void setup_UART(char ctemp);
 myUART.c(60): warning:  #1-D: last line of file ends without a newline
   	}
 myUART.c: 2 warnings, 0 errors
+creating preprocessor file for HAL_ADC.c...
 creating preprocessor file for myPWM.c...
 compiling HAL_Systick.c...
 compiling myPWM.c...
-creating preprocessor file for Uart_helper.c...
 compiling HAL_ADC.c...
 HAL_ADC.c(75): warning:  #223-D: function "SysTickWait10msDN" declared implicitly
   	SysTickWait10msDN(10); //Delay Function
 HAL_ADC.c: 1 warning, 0 errors
+creating preprocessor file for Uart_helper.c...
 compiling Uart_helper.c...
 src\Uart_helper.c(73): warning:  #1-D: last line of file ends without a newline
   // this function does the same thing as UartSetup(), but uses direct register access method
 src\Uart_helper.c: 1 warning, 0 errors
 linking...
-Program Size: Code=8252 RO-data=1432 RW-data=8 ZI-data=312  
-FromELF: creating hex file...
-After Build - User command #1: fromelf --bin --output .\rvmdk\project.bin .\rvmdk\project.axf
-".\rvmdk\project.axf" - 0 Error(s), 28 Warning(s).
+.\rvmdk\project.axf: Error: L6218E: Undefined symbol main (referred from entry9a.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+".\rvmdk\project.axf" - 1 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -133,7 +113,8 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:02
+Target not created.
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>
